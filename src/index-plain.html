@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="A game where you relief your stress of school or work place, and learn a valuable life lesson along the way, very educational game">
+    <meta keywords="game, stress, relief, school, workplace, education">
+    <meta author="TtheTtruth">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Our game</title>
+
+    <!-- Our styling -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+  </head>
+  <body>
+
+    <!-- Targets -->
+    <div class="targets my-4">
+      <h2>Targets</h2>
+      <div class="school">
+          <h4 onclick="schoolAttacked(attWeap)">SCHOOL</h4>
+      </div>
+      <div class="workplace">
+          <h4 onclick="workplaceAttacked(attWeap)">WORKPLACE</h4>
+      </div>
+    </div>
+
+    <!-- Weapons -->
+    <div class="weapons my-4">
+      <h2>Weapons</h2>
+      <div class="ak47">
+          <h4 onclick="player.buyWeapon('ak47')">AK 47</h4>
+      </div>
+      <div class="machine-gun">
+          <h4 onclick="player.buyWeapon('machineGun')">Machine gun</h4>
+      </div>
+      <div class="grenade">
+          <h4 onclick="player.buyWeapon('grenade')">grenade</h4>
+      </div>
+      <div class="tomahawk">
+          <h4 onclick="player.buyWeapon('tomahawk')">Tomahawk missile</h4>
+      </div>
+    </div>
+
+    <!-- Player's budget -->
+    <div class="budget my-4">
+      <h2>Player's budget</h2>
+      <p id="player-budget">20000</p>
+    </div>
+
+    <!-- Player's arsenal -->
+    <div class="arsenal my-4">
+      <h2>Arsenal</h2>
+      <!-- Chosen weapons get added here -->
+      <ul class="weapons-list"></ul>
+    </div>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Our JavaScript -->
+    <script src="static/js/weapon.js"></script>
+    <script src="static/js/target.js"></script>
+    <script src="static/js/player.js"></script>
+    <script src="static/js/gameplay.js"></script>
+    <script src="static/js/animation.js"></script>
+
+  </body>
+</html>

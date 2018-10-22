@@ -1,0 +1,40 @@
+.flying-ak47, .flying-dragunov, .flying-mp5, .flying-rpg, .flying-tomahawk {
+	opacity: 0;
+	position: absolute;
+	left: -100px;
+	width: 100px;
+	height: 78px;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: 10; 
+}
+
+.flying-ak47 {
+	top: 300px;
+	background-image: url('../img/weapons/ak47.png');
+	background-size: 90%;
+}
+
+.flying-dragunov {
+	top: 400px;
+	background-image: url('../img/weapons/dragunov.png');
+	background-size: 90%;
+}
+
+.flying-mp5 {
+	top: 500px;
+	background-image: url('../img/weapons/mp5.png');
+	background-size: 80%;
+}
+
+.flying-rpg {
+	top: 600px;
+	background-image: url('../img/weapons/rpg.png');
+	background-size: 90%;
+}
+
+.flying-tomahawk {
+	top: 700px;
+	background-image: url('../img/weapons/tomahawk.png');
+	background-size: 70%;
+}
