@@ -173,7 +173,7 @@ for (let target of [school, workplace]) {
 				opacity: 0,
 				left: '-50px'
 			}, 0);
-		}	
+		}
 	});	
 }
 

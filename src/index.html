@@ -31,8 +31,9 @@
 
         </div>
         <div class="workplace-stats text-center">
-          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">Workplace <br> Health: 3000HP</p>
+          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">Workplace <br> Health: <span id="workplace-health">3000</span>HP</p>
         </div>
+        <div class="workplace-health-minus" style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;"></div>
       </div>
       <div class="school-container">
         <div class="school-animation">
@@ -42,8 +43,9 @@
           
         </div>
         <div class="school-stats text-center">
-          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">School <br> Health: 4000HP</p>
+          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">School <br> Health: <span id="school-health">4000</span>HP</p>
         </div>
+        <div class="school-health-minus" style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;"></div>
       </div>
 
       <!-- Gun shop section -->
@@ -126,7 +128,13 @@
         <div class="player-budget text-center"><p class="player-available-budget" style="line-height: 75px; color: #fff; font-size: 16px; font-family: arial;">Your budget: $50.000</p></div>
       </div>
 
-      <!-- Free animations -->
+      <!-- Out of amo box -->
+      <div class="out-of-amo text-center">You're out of amunitions !</div>
+      <div class="target-destroyed text-center">The target is already destroyed urod !</div>
+      <div class="you-missed text-center">You missed !</div>
+      <div class="you-missed-extra text-center" style="line-height: 24px; padding: 22px;">(But you still lose your amo) <br> #life</div>
+
+      <!-- Free objects animations -->
       <div class="flying-ak47"></div>
       <div class="flying-dragunov"></div>
       <div class="flying-mp5"></div>
@@ -153,7 +161,7 @@
     <!-- More jQuery because slim jQuery is not enough for our badass animations -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-    <!-- Our JavaScript -->
+    <!-- Our awesome JavaScript -->
     <script src="static/js/weapon.js"></script>
     <script src="static/js/target.js"></script>
     <script src="static/js/player.js"></script>

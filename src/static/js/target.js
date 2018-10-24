@@ -24,7 +24,6 @@ function Target(name, health, destroyStatus) {
 			} else {
 				targetDestroyed = false;
 			}
-			
 			amoOut = true;
 			for (let weapon of player.arsenal) {
 				if (weapon.amo > 0) {
@@ -32,7 +31,6 @@ function Target(name, health, destroyStatus) {
 					break;
 				}
 			}
-
 			if (targetDestroyed === true) {
 				alert('All target destroyed, but you still lose')
 			} else if (targetDestroyed !== true) {
@@ -50,22 +48,51 @@ function Target(name, health, destroyStatus) {
 		} else if (attWeap.accuracy < randomNumber(0, 100)) {
 			attAcc = false;
 		} else {
-			attAcc = true; // Just to avoid unexpected behaviors
+			attAcc = false; // Just to avoid unexpected behaviors
 		}
 
 		// If the target is already destroyed, no attack. 
 		// Otherwise, you attack!!
 		if (this.destroyStatus == true) {
-			alert('The target is already destroyed!');
+			$('.target-destroyed').animate({
+					right: 0,
+					opacity: 1
+				}, 500).delay(1000).animate({
+					right: '-278px',
+					opacity: 0
+				}, 500);
+			return;
 		} else if (this.destroyStatus == false) {
 			// If attack accuracy is false, you missed! 
 			// Otherwise, you hit! Your target will lose health
 			if (attWeap.amo <= 0) {
-				alert("You're out of amo");
+				$('.out-of-amo').animate({
+					right: 0,
+					opacity: 1
+				}, 500).delay(800).animate({
+					right: '-278px',
+					opacity: 0
+				}, 500);
+				return;
 			} else if (attWeap.amo > 0) {
 				attWeap.amo -= 1
 				if (attAcc == false) {
-					alert('You missed');
+					$('.you-missed').animate({
+						right: 0,
+						opacity: 1
+					}, 500).delay(800).animate({
+						right: '-278px',
+						opacity: 0
+					}, 500);
+					$('.you-missed-extra').delay(1700).animate({
+						right: 0,
+						opacity: 1
+					}, 500).delay(1800).animate({
+						right: '-278px',
+						opacity: 0
+					}, 500)
+					// Show 1 less amunition, otherwise when the function break out right here, it's too early for running this code
+					$('#id-' + attWeap.objectName).text('x' + attWeap.amo);
 					checkWinLose();
 					return; // Break out of the getAttacked function right away
 				} else if (attAcc == true) {
@@ -90,12 +117,30 @@ function Target(name, health, destroyStatus) {
 		// Show 1 less amunition:
 		$('#id-' + attWeap.objectName).text('x' + attWeap.amo);
 
+		// Show how much was the damage:
+		$('.' + this.name + '-health-minus').text('-' + attDam + 'HP').animate({
+			opacity: 1,
+			height: '50px'
+		}, 200).delay(400).animate({
+			opacity: 0,
+			height: 0
+		}, 200);
+
+		// Show less health for target:
+		if (this.health >= 0) {
+			$('#' + this.name + '-health').text(this.health);
+		} else if (this.health < 0) {
+			$('#' + this.name + '-health').text('0');
+		}
+		
+
 		checkWinLose();
 
 		// Console test
 		console.log(targetDestroyed, amoOut);
 		console.log(this.name, this.health, this.destroyStatus);
 		console.log(attWeap.name, attWeap.amo);
+		console.log(attAcc);
 	}
 }
 
@@ -114,7 +159,7 @@ let schoolAttacked = function(attWeap) {
 		if (attWeap === ak47 || attWeap === mp5) {
 			return setTimeout(schoolAttackFunction, 1000, attWeap);
 		} else if (attWeap === dragunov) {
-			return setTimeout(schoolAttackFunction, 2000, attWeap);
+			return setTimeout(schoolAttackFunction, 1000, attWeap);
 		} else if (attWeap === rpg) {
 			return setTimeout(schoolAttackFunction, 2000, attWeap);
 		} else if (attWeap === tomahawk) {
@@ -134,7 +179,7 @@ let workplaceAttacked = function(attWeap) {
 		if (attWeap === ak47 || attWeap === mp5) {
 			return setTimeout(workplaceAttackFunction, 1000, attWeap);
 		} else if (attWeap === dragunov) {
-			return setTimeout(workplaceAttackFunction, 2000, attWeap);
+			return setTimeout(workplaceAttackFunction, 1000, attWeap);
 		} else if (attWeap === rpg) {
 			return setTimeout(workplaceAttackFunction, 2000, attWeap);
 		} else if (attWeap === tomahawk) {

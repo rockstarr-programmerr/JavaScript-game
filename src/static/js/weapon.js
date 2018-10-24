@@ -14,7 +14,13 @@ function Weapon(name, objectName, damage, originalAmo, amo, accuracy, price, img
 
 	this.attack = function() {
 		if (this.amo <= 0) {
-			alert("You've ran out of amo");
+			$('.out-of-amo').animate({
+				right: 0,
+				opacity: 1
+			}, 500).delay(800).animate({
+				right: '-278px',
+				opacity: 0
+			});
 		} else if (this.amo > 0) {
 			attWeap = this;
 			console.log(attWeap);
