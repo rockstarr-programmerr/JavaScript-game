@@ -27,22 +27,22 @@
         <div class="workplace-animation">
           
         </div>
-        <div class="workplace-img-container">
+        <div class="workplace-img-container" onclick="workplaceAttacked(attWeap)">
 
         </div>
-        <div class="workplace-stats">
-          
+        <div class="workplace-stats text-center">
+          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">Workplace <br> Health: 3000HP</p>
         </div>
       </div>
       <div class="school-container">
         <div class="school-animation">
           
         </div>
-        <div class="school-img-container">
+        <div class="school-img-container" onclick="schoolAttacked(attWeap)">
           
         </div>
-        <div class="school-stats">
-          
+        <div class="school-stats text-center">
+          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">School <br> Health: 4000HP</p>
         </div>
       </div>
 
@@ -51,10 +51,14 @@
         <div class="store-sign">
           <p>Gun shop</p>
         </div>
+        <div class="no-budget-hint text-center">
+          <p style="line-height: 80px; font-family: arial, font-size: 16px; color: #fff;">No money, no weapon...</p>
+        </div>
         <div class="store-ak47">
           <div class="store-ak47-img" onclick="player.buyWeapon('ak47')"></div>
           <div class="store-ak47-stats">
             <div class="store-stats">
+              <p>Name: &emsp; &emsp; <em>AK47</em></p>
               <p>Damage: &emsp; <em>500 HP</em></p>
               <p>Accuracy: &emsp; <em>80%</em></p>
               <p>Amunitions: &nbsp; <em>10</em></p>
@@ -66,6 +70,7 @@
           <div class="store-dragunov-img" onclick="player.buyWeapon('dragunov')"></div>
           <div class="store-dragunov-stats">
             <div class="store-stats">
+              <p>Name: &emsp; &ensp; <em>Dragunov</em></p>
               <p>Damage: &emsp; <em>700 HP</em></p>
               <p>Accuracy: &emsp; <em>90%</em></p>
               <p>Amunitions: &nbsp; <em>4</em></p>
@@ -74,9 +79,10 @@
           </div>
         </div>
         <div class="store-mp5">
-          <div class="store-mp5-img" onclick="player.buyWeapon('machineGun')"></div>
+          <div class="store-mp5-img" onclick="player.buyWeapon('mp5')"></div>
           <div class="store-mp5-stats">
             <div class="store-stats">
+              <p>Name: <em>Western spy's gun</em></p>
               <p>Damage: &emsp; <em>300 HP</em></p>
               <p>Accuracy: &emsp; <em>90%</em></p>
               <p>Amunitions: &nbsp; <em>10</em></p>
@@ -85,9 +91,10 @@
           </div>
         </div>
         <div class="store-rpg">
-          <div class="store-rpg-img" onclick="player.buyWeapon('grenade')"></div>
+          <div class="store-rpg-img" onclick="player.buyWeapon('rpg')"></div>
           <div class="store-rpg-stats">
             <div class="store-stats">
+              <p>Name:  &emsp; <em>Russian RPG</em></p>
               <p>Damage: &emsp; <em>800 HP</em></p>
               <p>Accuracy: &emsp; <em>60%</em></p>
               <p>Amunitions: &nbsp; <em>3</em></p>
@@ -95,10 +102,11 @@
             </div>
           </div>
         </div>
-        <div class="store-tomahawk" onclick="player.buyWeapon('tomahawk')">
-          <div class="store-tomahawk-img"></div>
+        <div class="store-tomahawk">
+          <div class="store-tomahawk-img" onclick="player.buyWeapon('tomahawk')"></div>
           <div class="store-tomahawk-stats">
             <div class="store-stats">
+              <p>Name: <em>Tomahawk missile</em></p>
               <p>Damage: &emsp; <em>2000 HP</em></p>
               <p>Accuracy: &emsp; <em>60%</em></p>
               <p>Amunitions: &nbsp; <em>1</em></p>
@@ -109,8 +117,13 @@
       </div>
 
       <!-- Arsenal section -->
-      <div class="arsenal-container">
-        
+      <div class="arsenal-container"></div>
+
+      <!-- Player section -->
+      <div class="player-container">
+        <div class="player-img"></div>
+        <div class="player-name text-center"><p style="line-height: 75px; color: #fff; font-size: 16px; font-family: arial;"><b>You</b></p></div>
+        <div class="player-budget text-center"><p class="player-available-budget" style="line-height: 75px; color: #fff; font-size: 16px; font-family: arial;">Your budget: $50.000</p></div>
       </div>
 
       <!-- Free animations -->
@@ -119,6 +132,12 @@
       <div class="flying-mp5"></div>
       <div class="flying-rpg"></div>
       <div class="flying-tomahawk"></div>
+
+      <div class="ak47-bullet"></div>
+      <div class="dragunov-bullet"></div>
+      <div class="mp5-bullet"></div>
+      <div class="rpg-bullet"></div>
+      <div class="tomahawk-bullet"></div>
     </div>
 
 

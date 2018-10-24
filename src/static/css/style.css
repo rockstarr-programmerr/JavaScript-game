@@ -18,7 +18,7 @@ body {
 	display: block;
 	position: absolute;
 	top: 50px;
-	left: 200px;
+	left: 320px;
 	width: 200px;
 	height: 200px;/*
 	border: 1px solid #fff;*/
@@ -29,7 +29,7 @@ body {
 	display: block;
 	position: absolute;
 	top: 50px;
-	left: 600px;
+	left: 720px;
 	width: 200px;
 	height: 200px;/*
 	border: 1px solid #fff;*/
@@ -60,6 +60,15 @@ body {
 	cursor: pointer; 
 }
 
+.workplace-stats, .school-stats {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
+}
+
 /* ========================================================================================================= */
 
 .store-container {
@@ -71,6 +80,17 @@ body {
 	height: 400px;
 	border: 1px solid #fff;
 	z-index: 2;
+}
+
+.no-budget-hint {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 247px;
+	width: 0;
+	height: 80px;
+	overflow: hidden;
+	border: 1px solid #fff;
 }
 
 .store-ak47, .store-dragunov, .store-mp5, .store-rpg, .store-tomahawk {
@@ -134,9 +154,9 @@ body {
 	display: block;
 	position: relative;
 	color: #fff;
-	font-size: 14px;
+	font-size: 13px;
 	font-family: arial;
-	line-height: 20px;
+	line-height: 16px;
 }
 
 .store-sign {
@@ -200,4 +220,42 @@ body {
 	text-align: center;
 	line-height: 20px;
 	padding-top: 10px;
+}
+
+/* Player ===============================================================================================*/
+
+.player-container {
+	display: block;
+	position: absolute;
+	top: 550px;
+	left: 700px;
+	width: 200px;
+	height: 150px;
+	border: 1px solid #fff;
+}
+
+.player-img, .player-name, .player-budget {
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100px;
+	height: 75px;
+	border: 1px solid #fff;
+}
+
+.player-img {
+	left: 0;
+	background-image: url('../img/you.png');
+	background-size: 70%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.player-name {
+	right: 0;
+}
+
+.player-budget {
+	top: 75px;
+	width: 100%;
 }

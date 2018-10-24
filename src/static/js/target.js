@@ -2,6 +2,7 @@ let attDam; // The attack's damage
 let attAcc; // The attack's accuracy
 let targetDestroyed; // Check if both targets are destroyed
 let amoOut; // Check if all weapons' amo are out
+let targetAttacked; // Send to animation file for animations
 
 // Build a function to return a random number 
 function randomNumber(from, to) {
@@ -49,7 +50,7 @@ function Target(name, health, destroyStatus) {
 		} else if (attWeap.accuracy < randomNumber(0, 100)) {
 			attAcc = false;
 		} else {
-			attAcc = false; // Just to avoid unexpected behaviors
+			attAcc = true; // Just to avoid unexpected behaviors
 		}
 
 		// If the target is already destroyed, no attack. 
@@ -86,6 +87,9 @@ function Target(name, health, destroyStatus) {
 			}
 		}
 
+		// Show 1 less amunition:
+		$('#id-' + attWeap.objectName).text('x' + attWeap.amo);
+
 		checkWinLose();
 
 		// Console test
@@ -95,8 +99,8 @@ function Target(name, health, destroyStatus) {
 	}
 }
 
-let school = new Target('School', 4000, false);
-let workplace = new Target('Workplace', 3000, false);
+let school = new Target('school', 4000, false);
+let workplace = new Target('workplace', 3000, false);
 
 // Delay executing the functions so that the animation can be completed before the function's result show up
 let schoolAttackFunction = function(attWeap) {
@@ -106,13 +110,15 @@ let schoolAttackFunction = function(attWeap) {
 let schoolAttacked = function(attWeap) {
 	if (attWeap.amo <= 0 || school.destroyStatus === true) {
 		return schoolAttackFunction(attWeap);
-	} else if (attWeap.amo > 0) {
-		if (attWeap === ak47 || attWeap === machineGun) {
+	} else if (attWeap.amo > 0)	{
+		if (attWeap === ak47 || attWeap === mp5) {
 			return setTimeout(schoolAttackFunction, 1000, attWeap);
-		} else if (attWeap === grenade) {
-			return setTimeout(schoolAttackFunction, 1000, attWeap);
+		} else if (attWeap === dragunov) {
+			return setTimeout(schoolAttackFunction, 2000, attWeap);
+		} else if (attWeap === rpg) {
+			return setTimeout(schoolAttackFunction, 2000, attWeap);
 		} else if (attWeap === tomahawk) {
-			return setTimeout(schoolAttackFunction, 1000, attWeap);
+			return setTimeout(schoolAttackFunction, 6000, attWeap);
 		}
 	}
 }
@@ -125,12 +131,14 @@ let workplaceAttacked = function(attWeap) {
 	if (attWeap.amo <= 0 || workplace.destroyStatus === true) {
 		return workplaceAttackFunction(attWeap);
 	} else if (attWeap.amo > 0)	{
-		if (attWeap === ak47 || attWeap === machineGun) {
+		if (attWeap === ak47 || attWeap === mp5) {
 			return setTimeout(workplaceAttackFunction, 1000, attWeap);
-		} else if (attWeap === grenade) {
-			return setTimeout(workplaceAttackFunction, 1000, attWeap);
+		} else if (attWeap === dragunov) {
+			return setTimeout(workplaceAttackFunction, 2000, attWeap);
+		} else if (attWeap === rpg) {
+			return setTimeout(workplaceAttackFunction, 2000, attWeap);
 		} else if (attWeap === tomahawk) {
-			return setTimeout(workplaceAttackFunction, 1000, attWeap);
+			return setTimeout(workplaceAttackFunction, 6000, attWeap);
 		}
 	}
 }
