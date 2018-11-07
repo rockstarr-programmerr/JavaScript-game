@@ -42,6 +42,8 @@ function Player(name, budget, arsenal) {
 		// If player choose same weapon twice, they have more amo
 		// Then show the chosen weapon in the arsenal list
 		if (checkBudget(clickedWeapon) === false) {
+			// Part bellow is only for animation purpose
+			// ===========
 			this.budget -= clickedWeapon.price;
 			if (this.budget < 0) {
 				adjustedBudget = -1;
@@ -49,6 +51,8 @@ function Player(name, budget, arsenal) {
 				adjustedBudget = this.budget;
 			};
 			this.budget += clickedWeapon.price;
+			// ===========
+			blockField(1300);
 			$('.no-budget-hint').animate({
 				width: '200px'
 			}, 300).delay(700).animate({
@@ -59,7 +63,6 @@ function Player(name, budget, arsenal) {
 				clickedWeapon.amo += clickedWeapon.originalAmo;
 				this.budget -= clickedWeapon.price;
 				$('#id-' + chosenWeapon).text('x' + clickedWeapon.amo);
-
 			} else if (this.arsenal.includes(clickedWeapon) === false) {
 				this.arsenal.push(clickedWeapon);
 				this.budget -= clickedWeapon.price;
@@ -76,9 +79,9 @@ function Player(name, budget, arsenal) {
 
 	};
 
-	this.removeWeapon = function() {
+	// this.removeWeapon = function() {
 
-	};
+	// };
 }
 
 let player = new Player('You', 50000, []);

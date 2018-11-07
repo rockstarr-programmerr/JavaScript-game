@@ -138,9 +138,9 @@ $('.store-tomahawk-img').click(function() {
 let targetLeftPos;
 function findTargetPosition(target) {
 	if (target === workplace) {
-		targetLeftPos = '400px';
+		targetLeftPos = '390px';
 	} else if (target === school) {
-		targetLeftPos = '810px';
+		targetLeftPos = '770px';
 	}
 	return targetLeftPos;
 }
@@ -148,6 +148,7 @@ function findTargetPosition(target) {
 for (let target of [school, workplace]) {
 	$('.' + target.name + '-img-container').click(function() {
 		if ((attWeap === ak47 || attWeap === mp5) && (attWeap.amo > 0 && target.destroyStatus == false)) {
+			blockField(attWeap.animationTime*3);
 			for (i = 0; i < 3; i++) {
 				$('.' + attWeap.objectName + '-bullet').animate({
 					opacity: '1',
@@ -161,7 +162,18 @@ for (let target of [school, workplace]) {
 					left: '-50px'
 				}, 0);
 			}
+			// Explosion animations:
+			setTimeout(function() {
+				$('.fire-ball-' + target.name + '-1').fadeIn(300).delay(500).fadeOut(300);
+			}, attWeap.animationTime);
+			setTimeout(function() {
+				$('.fire-ball-' + target.name + '-2').fadeIn(300).delay(500).fadeOut(300);
+			}, attWeap.animationTime*2);
+			setTimeout(function() {
+				$('.fire-ball-' + target.name + '-3').fadeIn(300).delay(500).fadeOut(300);
+			}, attWeap.animationTime*3);
 		} else if ((attWeap === dragunov || attWeap === rpg || attWeap === tomahawk) && (attWeap.amo > 0 && target.destroyStatus == false)) {
+			blockField(attWeap.animationTime);
 			$('.' + attWeap.objectName + '-bullet').animate({
 				opacity: '1',
 				top: '510px',
@@ -173,8 +185,18 @@ for (let target of [school, workplace]) {
 				opacity: 0,
 				left: '-50px'
 			}, 0);
+			// Dragunov, RPG, Tomahawk explosion animation is inside of Target.getAttacked() instead
 		}
 	});	
 }
 
-	
+// General animations
+
+// Play again button hover effect:
+$('.play-again-form').mouseenter(function() {
+	$('.play-again-btn').animate({opacity: '0.7'}, 200);
+});
+
+$('.play-again-form').mouseleave(function() {
+	$('.play-again-btn').animate({opacity: 0.9}, 200);
+});

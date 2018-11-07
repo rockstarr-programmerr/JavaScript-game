@@ -24,26 +24,30 @@
 
       <!-- Targets section -->
       <div class="workplace-container">
-        <div class="workplace-animation">
-          
-        </div>
-        <div class="workplace-img-container" onclick="workplaceAttacked(attWeap)">
-
+        <div class="workplace-animation"></div>
+        <div class="workplace-img-container">
+          <div class="burning-1-workplace"></div>
+          <div class="burning-2-workplace"></div>
+          <div class="burning-3-workplace"></div>
+          <div class="base-fire-workplace"></div>
+          <div class="dust-cloud-workplace"></div>
         </div>
         <div class="workplace-stats text-center">
-          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">Workplace <br> Health: <span id="workplace-health">3000</span>HP</p>
+          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">Workplace <br> Health: <span id="workplace-health">10000</span>HP</p>
         </div>
         <div class="workplace-health-minus" style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;"></div>
       </div>
       <div class="school-container">
-        <div class="school-animation">
-          
-        </div>
-        <div class="school-img-container" onclick="schoolAttacked(attWeap)">
-          
+        <div class="school-animation"></div>
+        <div class="school-img-container">
+          <div class="burning-1-school"></div>
+          <div class="burning-2-school"></div>
+          <div class="burning-3-school"></div>
+          <div class="base-fire-school"></div>
+          <div class="dust-cloud-school"></div>
         </div>
         <div class="school-stats text-center">
-          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">School <br> Health: <span id="school-health">4000</span>HP</p>
+          <p style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;">School <br> Health: <span id="school-health">12000</span>HP</p>
         </div>
         <div class="school-health-minus" style="line-height: 26px; font-family: arial, font-size: 16px; color: #fff;"></div>
       </div>
@@ -57,7 +61,7 @@
           <p style="line-height: 80px; font-family: arial, font-size: 16px; color: #fff;">No money, no weapon...</p>
         </div>
         <div class="store-ak47">
-          <div class="store-ak47-img" onclick="player.buyWeapon('ak47')"></div>
+          <div class="store-ak47-img"></div>
           <div class="store-ak47-stats">
             <div class="store-stats">
               <p>Name: &emsp; &emsp; <em>AK47</em></p>
@@ -69,7 +73,7 @@
           </div>
         </div>
         <div class="store-dragunov">
-          <div class="store-dragunov-img" onclick="player.buyWeapon('dragunov')"></div>
+          <div class="store-dragunov-img"></div>
           <div class="store-dragunov-stats">
             <div class="store-stats">
               <p>Name: &emsp; &ensp; <em>Dragunov</em></p>
@@ -81,7 +85,7 @@
           </div>
         </div>
         <div class="store-mp5">
-          <div class="store-mp5-img" onclick="player.buyWeapon('mp5')"></div>
+          <div class="store-mp5-img"></div>
           <div class="store-mp5-stats">
             <div class="store-stats">
               <p>Name: <em>Western spy's gun</em></p>
@@ -93,7 +97,7 @@
           </div>
         </div>
         <div class="store-rpg">
-          <div class="store-rpg-img" onclick="player.buyWeapon('rpg')"></div>
+          <div class="store-rpg-img"></div>
           <div class="store-rpg-stats">
             <div class="store-stats">
               <p>Name:  &emsp; <em>Russian RPG</em></p>
@@ -105,7 +109,7 @@
           </div>
         </div>
         <div class="store-tomahawk">
-          <div class="store-tomahawk-img" onclick="player.buyWeapon('tomahawk')"></div>
+          <div class="store-tomahawk-img"></div>
           <div class="store-tomahawk-stats">
             <div class="store-stats">
               <p>Name: <em>Tomahawk missile</em></p>
@@ -134,6 +138,28 @@
       <div class="you-missed text-center">You missed !</div>
       <div class="you-missed-extra text-center" style="line-height: 24px; padding: 22px;">(But you still lose your amo) <br> #life</div>
 
+      <!-- Chance for mercy section -->
+      <div id="mercy-1-box">
+        <div id="mercy-1-option-1">
+          <p style="margin: 0 auto;">Speed up the rocket,<br>kill 'em !</p>
+        </div>
+        <div id="mercy-1-option-2">
+          <p>Oh no I changed my mind. Stop the rocket !</p>
+        </div>
+      </div>
+
+      <div id="mercy-2-box">
+        <div id="mercy-2-option-1">
+          <p style="margin: 0 auto;">Nah just kidding.<br>Blow them up ! </p>
+        </div>
+        <div id="mercy-2-option-2">
+          <p>Withdraw the rocket.</p>
+        </div>
+      </div>
+
+      <!-- Game field blocker -->
+      <div class="blocker"></div>
+
       <!-- Free objects animations -->
       <div class="flying-ak47"></div>
       <div class="flying-dragunov"></div>
@@ -146,6 +172,50 @@
       <div class="mp5-bullet"></div>
       <div class="rpg-bullet"></div>
       <div class="tomahawk-bullet"></div>
+
+      <div class="fire-ball-workplace-1"></div>
+      <div class="fire-ball-workplace-2"></div>
+      <div class="fire-ball-workplace-3"></div>
+
+      <div class="fire-ball-school-1"></div>
+      <div class="fire-ball-school-2"></div>
+      <div class="fire-ball-school-3"></div>
+
+      <div class="big-explosion-workplace"></div>
+      <div class="big-explosion-school"></div>
+      <div class="nuclear-explosion-workplace"></div>
+      <div class="nuclear-explosion-school"></div>
+
+    </div>
+
+    
+    <!-- Win/lose status box -->
+    <div id="game-container-block"></div>
+    <div id="result-fake-win" class="result text-center font-weight-bold">
+      <p> All target destroyed, but you still lose anyway...</p>
+      <div class="result-img result-img-fake-win"></div>
+      <div class="play-again-btn">Play again</div>
+      <form class="play-again-form" action="index.html">
+        <button class="btn btn-default">Play again</button>
+      </form>
+    </div>
+    <div id="result-lose" class="result text-center font-weight-bold" style="font-size: 35px;">
+      <p> You've ran out of all amunitions. Game over!</p>
+      <div class="result-img result-img-lose"></div>
+      <div class="play-again-btn">Play again</div>
+      <form class="play-again-form" action="index.html">
+        <button class="btn btn-default">Play again</button>
+      </form>
+    </div>
+    <div id="result-real-win" class="result text-center font-weight-bold">
+      <p>YOU WON !!</p>
+      <p id="real-win-congratulation">If you look into here to find the solution for the game, go away. Play it the right way, have fun, don't cheat.</p>
+      <p style="display: block; width: 100%; padding: 20px 20px 0 0; font-size: 20px; text-align: right; line-height: 26px;">See you next time, bye bye!<br>- Ttruth -</p>
+      <div class="result-img result-img-real-win"></div>
+      <div class="play-again-btn">Play again</div>
+      <form class="play-again-form" action="index.html">
+        <button class="btn btn-default">Play again</button>
+      </form>
     </div>
 
 

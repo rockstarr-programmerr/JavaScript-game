@@ -287,3 +287,309 @@ body {
 	line-height: 100px;
 	opacity: 0;
 }
+
+/* Result box ==================================================================*/
+
+.result {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+	width: 600px;
+	height: 500px;
+	position: absolute;
+	left: 200px;
+	top: 150px;
+	border-radius: 10px;
+	z-index: 20;
+	background-image: url(../img/result-background.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	color: #2F4F4F;
+	font-size: 40px;
+	line-height: 50px;
+}
+
+#result-lose, #result-fake-win, #result-real-win {
+	opacity: 0;
+	top: -500px;
+}
+
+#real-win-congratulation {
+	padding: 20px 20px 0 20px;
+	font-size: 20px;
+	line-height: 26px;
+}
+
+.result-img {
+	margin-top: 20px;
+	width: 120px;
+	height: 120px;
+	z-index: 30;
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.result-img-fake-win {
+	background-image: url(../img/sad-face-fake-win.png);
+}
+
+.result-img-lose {
+	background-image: url(../img/sad-face-lose.png);
+}
+
+.result-img-real-win {
+	margin-top: 0;
+	position: relative;
+	right: 180px;
+	background-image: url(../img/happy-face-real-win.png);
+	background-size: contain;
+}
+
+.play-again-form {
+	position: absolute;
+	bottom: 56px;
+	z-index: 50;
+	opacity: 0;
+}
+
+.play-again-btn {
+	position: absolute;
+	bottom: 56px;
+	width: 98px;
+	height: 36px;
+	font-size: 16px;
+	line-height: 36px;
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 4px;
+	cursor: pointer;
+	opacity: 0.9;
+	z-index: 40;
+}
+
+/* Game container blocker */
+#game-container-block {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1024px;
+	height: 768px;
+	background-color: #111;
+	z-index: 19;
+	opacity: 0.6;
+}
+
+/* Mercy part  ======================================================================= */
+
+#mercy-1-box, #mercy-2-box {
+	position: absolute;
+	display: none;
+	justify-content: space-between;
+	top: 480px;
+	left: 300px;
+	width: 375px;
+	height: 60px;
+	color: #fff;
+	font-family: arial;
+	font-size: 16px;
+	text-align: center;
+	line-height: 24px;
+	z-index: 20;
+}
+
+#mercy-1-option-1, #mercy-1-option-2, #mercy-2-option-1 {
+	width: 185px;
+	float: left;
+	margin: 0 1px;
+	display: flex;
+	align-items: center;
+	border: 1px solid #fff;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+#mercy-2-option-2 {
+	width: 185px;
+	float: left;
+	margin: 0 1px;
+	border: 1px solid #fff;
+	border-radius: 6px;
+	cursor: pointer;
+	height: 50px;
+	line-height: 50px;
+}
+
+#mercy-1-option-1:hover, #mercy-1-option-2:hover, #mercy-2-option-1:hover, #mercy-2-option-2:hover {
+	opacity: 0.8;
+}
+
+/* Blocker */
+.blocker {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	width: 1024px;
+	height: 768px;
+	z-index: 19;
+}
+
+/* Fire ball */
+.fire-ball-workplace-1, .fire-ball-workplace-2, .fire-ball-workplace-3, .fire-ball-school-1, .fire-ball-school-2, .fire-ball-school-3, .big-explosion-workplace, .big-explosion-school, .nuclear-explosion-workplace, .nuclear-explosion-school {
+	display: none;
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	background-image: url(../img/animation/fireball.png);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 10;
+}
+
+.big-explosion-workplace, .big-explosion-school {
+	background-image: url(../img/animation/big-explosion.png);
+	width: 120px;
+	height: 120px;
+}
+
+.nuclear-explosion-workplace, .nuclear-explosion-school {
+	background-image: url(../img/animation/nuclear-explosion.png);
+	width: 180px;
+	height: 180px;
+}
+
+.big-explosion-workplace {
+	top: 90px;
+	left: 360px;
+}
+
+.nuclear-explosion-workplace {
+	top: 20px;
+	left: 340px;
+}
+
+.big-explosion-school {
+	top: 100px;
+	left: 770px;
+}
+
+.nuclear-explosion-school {
+	top: 20px;
+	left: 740px;
+}
+
+.fire-ball-workplace-1 {
+	top: 120px;
+	left: 380px;
+}
+
+.fire-ball-workplace-2 {
+	top: 60px;
+	left: 340px;
+}
+
+.fire-ball-workplace-3 {
+	top: 50px;
+	left: 430px;
+}
+
+.fire-ball-school-1 {
+	top: 120px;
+	left: 790px;
+}
+
+.fire-ball-school-2 {
+	top: 70px;
+	left: 730px;
+}
+
+.fire-ball-school-3 {
+	top: 50px;
+	left: 840px;
+}
+
+/* Burning down! =================== */
+
+.burning-1-workplace, .burning-2-workplace, .burning-3-workplace, .base-fire-workplace, .burning-1-school, .burning-2-school, .burning-3-school, .base-fire-school {
+	display: none;
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	background-image: url(../img/animation/burning-1.gif);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 10;
+}
+
+.burning-1-workplace {
+	top: -10px;
+	left: 20px;
+}
+
+.burning-2-workplace {
+	top: -30px;
+	left: 90px;
+}
+
+.burning-3-workplace {
+	top: 20px;
+	left: 60px;
+}
+
+.base-fire-workplace {
+	background-image: url(../img/animation/base-fire.gif);
+	background-size: 100%;
+	width: 130px;
+	height: 130px;
+	top: 25px;
+	left: 35px;
+}
+
+.burning-1-school {
+	top: 15px;
+	left: 5px;
+}
+
+.burning-2-school {
+	top: -5px;
+	left: 115px;
+}
+
+.burning-3-school {
+	top: 30px;
+	left: 65px;
+}
+
+.base-fire-school {
+	background-image: url(../img/animation/base-fire.gif);
+	background-size: 100%;
+	width: 140px;
+	height: 140px;
+	top: 20px;
+	left: 30px;
+}
+
+.dust-cloud-workplace, .dust-cloud-school {
+	display: none;
+	position: absolute;
+	top: -90px;
+	left: -40px;
+	width: 160%;
+	height: 160%;
+	background-image: url(../img/animation/dust-cloud.png);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 10;
+}
+
+.dust-cloud-school {
+	left: -60px;
+}
