@@ -89,7 +89,7 @@ $('#mercy-2-option-2').click(function() {
 	$('#mercy-2-box').hide();
 	// Finally, animate the REAL win!!
 	$('#game-container-block').delay(14000).fadeIn(300);
-	$('#real-win-congratulation').text("Congratulation! You've beaten the game because you are a merciful and warm-hearted person. You did not seek revenge on those that hurted you. More hearts like yours are what the world needs. Fill it with love and kindness, it's the only way to beat the game of life :)")
+	$('#real-win-congratulation').text("Congratulation! You've beaten the game because you are a merciful and warm-hearted person. You forgave those that hurted you. More hearts like yours are all that the world needs. Fill it with love and kindness, it's the only way to beat the game of life :)")
 	$('#result-real-win').delay(14000).animate({
 		top: '150px',
 		opacity: 1

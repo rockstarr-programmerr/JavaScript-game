@@ -200,3 +200,40 @@ $('.play-again-form').mouseenter(function() {
 $('.play-again-form').mouseleave(function() {
 	$('.play-again-btn').animate({opacity: 0.9}, 200);
 });
+
+// Sound effects:
+let soundAk47Shot = document.querySelector('#sound-ak47-shot');
+let soundMp5Shot = document.querySelector('#sound-mp5-shot');
+let soundDragunovShot = document.querySelector('#sound-dragunov-shot');
+let soundRpgShot = document.querySelector('#sound-rpg-shot');
+let soundTomahawkShot = document.querySelector('#sound-tomahawk-shot');
+
+$('.workplace-img-container, .school-img-container').click(function() {
+	switch (attWeap) {
+		case ak47:
+			soundAk47Shot.pause();
+			soundAk47Shot.currentTime = 0;
+			soundAk47Shot.play();
+			break;
+		case dragunov:
+			soundDragunovShot.pause();
+			soundDragunovShot.currentTime = 0;
+			soundDragunovShot.play();
+			break;
+		case mp5:
+			soundMp5Shot.pause();
+			soundMp5Shot.currentTime = 0;
+			soundMp5Shot.play();
+			break;
+		case rpg:
+			soundRpgShot.pause();
+			soundRpgShot.currentTime = 0;
+			soundRpgShot.play();
+			break;
+		case tomahawk:
+			soundTomahawkShot.pause();
+			soundTomahawkShot.currentTime = 0;
+			soundTomahawkShot.play();
+			break;	
+	}
+});

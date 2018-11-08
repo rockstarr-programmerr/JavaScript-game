@@ -91,7 +91,7 @@ function Target(name, health, destroyStatus) {
 				checkWinLose();
 				if (attAcc == false) {
 					setTimeout(function() {
-						blockField(3000);
+						blockField(1000);
 					}, 50);
 					$('.you-missed').animate({
 						right: 0,
@@ -100,13 +100,13 @@ function Target(name, health, destroyStatus) {
 						right: '-278px',
 						opacity: 0
 					}, 500);
-					$('.you-missed-extra').delay(1700).animate({
-						right: 0,
-						opacity: 1
-					}, 500).delay(1800).animate({
-						right: '-278px',
-						opacity: 0
-					}, 500)
+					// $('.you-missed-extra').delay(1700).animate({
+					// 	right: 0,
+					// 	opacity: 1
+					// }, 500).delay(1800).animate({
+					// 	right: '-278px',
+					// 	opacity: 0
+					// }, 500)
 					// Show 1 less amunition, otherwise when the function break out right here, it's too early for running this code
 					$('#id-' + attWeap.objectName).text('x' + attWeap.amo);
 					return; // Break out of the getAttacked function right away
