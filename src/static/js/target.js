@@ -32,14 +32,26 @@ function Target(name, health, destroyStatus) {
 				}
 			}
 			if (targetDestroyed === true) {
+				soundFireOne.pause();
+				soundFireTwo.pause();
 				$('#game-container-block').fadeIn(300);
+				soundBackground.pause();
+				soundLose.pause();
+				soundLose.currentTime = 0;
+				soundLose.play();
 				$('#result-fake-win').animate({
 					top: '150px',
 					opacity: 1
 				}, 700);
 			} else if (targetDestroyed !== true) {
 				if (amoOut === true) {
+					soundFireOne.pause();
+					soundFireTwo.pause();
 					$('#game-container-block').fadeIn(300);
+					soundBackground.pause();
+					soundLose.pause();
+					soundLose.currentTime = 0;
+					soundLose.play();
 					$('#result-lose').animate({
 						top: '150px',
 						opacity: 1
@@ -87,6 +99,17 @@ function Target(name, health, destroyStatus) {
 				return;
 			} 
 			else if (attWeap.amo > 0) {
+				switch (attWeap) {
+					case rpg:
+						soundRpgExplosion.pause();
+						soundRpgExplosion.currentTime = 0;
+						soundRpgExplosion.play();
+						break;
+					case tomahawk:
+						soundTomahawkExplosion.pause();
+						soundTomahawkExplosion.currentTime = 0;
+						soundTomahawkExplosion.play();
+				}
 				attWeap.amo -= 1
 				checkWinLose();
 				if (attAcc == false) {
@@ -100,13 +123,6 @@ function Target(name, health, destroyStatus) {
 						right: '-278px',
 						opacity: 0
 					}, 500);
-					// $('.you-missed-extra').delay(1700).animate({
-					// 	right: 0,
-					// 	opacity: 1
-					// }, 500).delay(1800).animate({
-					// 	right: '-278px',
-					// 	opacity: 0
-					// }, 500)
 					// Show 1 less amunition, otherwise when the function break out right here, it's too early for running this code
 					$('#id-' + attWeap.objectName).text('x' + attWeap.amo);
 					return; // Break out of the getAttacked function right away
@@ -158,6 +174,30 @@ function Target(name, health, destroyStatus) {
 
 		// Show targets burning:
 		if (this.health <= 0) {
+			switch (this) {
+				case school:
+					soundSchoolFall.pause();
+					soundSchoolFall.currentTime = 0;
+					soundSchoolFall.play();
+					if (workplace.health > 8000) {
+						soundFireOne.pause();
+						soundFireTwo.pause();
+					} else if (workplace.health > 2000) {
+						soundFireTwo.pause();
+					} 
+					break;
+				case workplace:
+					soundWorkplaceFall.pause();
+					soundWorkplaceFall.currentTime = 0;
+					soundWorkplaceFall.play();
+					if (school.health > 8000) {
+						soundFireOne.pause();
+						soundFireTwo.pause();
+					} else if (school.health > 2000) {
+						soundFireTwo.pause();
+					} 
+					break;
+			}
 			$('.burning-1-' + this.name).fadeOut(300);
 			$('.burning-2-' + this.name).fadeOut(300);
 			$('.burning-3-' + this.name).fadeOut(300);
@@ -173,18 +213,31 @@ function Target(name, health, destroyStatus) {
 				}, 1400);	
 			}
 		} else if (this.health < 2000) {
+			soundFireTwo.pause();
+			soundFireTwo.currentTime = 0;
+			soundFireTwo.play();
+			console.log(soundFireTwo);
 			$('.burning-1-' + this.name).fadeIn(200);
 			$('.burning-2-' + this.name).fadeIn(200);
 			$('.burning-3-' + this.name).fadeIn(200);
 			$('.base-fire-' + this.name).fadeIn(200);
 		} else if (this.health < 4000) {
+			soundFireOne.pause();
+			soundFireOne.currentTime = 0;
+			soundFireOne.play();
 			$('.burning-1-' + this.name).fadeIn(200);
 			$('.burning-2-' + this.name).fadeIn(200);
 			$('.burning-3-' + this.name).fadeIn(200);
 		} else if (this.health < 6000) {
+			soundFireOne.pause();
+			soundFireOne.currentTime = 0;
+			soundFireOne.play();
 			$('.burning-1-' + this.name).fadeIn(200);
 			$('.burning-2-' + this.name).fadeIn(200);
 		} else if (this.health < 8000) {
+			soundFireOne.pause();
+			soundFireOne.currentTime = 0;
+			soundFireOne.play();
 			$('.burning-1-' + this.name).fadeIn(200);
 		}
 
@@ -199,7 +252,7 @@ function Target(name, health, destroyStatus) {
 }
 
 let school = new Target('school', 4000, false);
-let workplace = new Target('workplace', 3500, false);
+let workplace = new Target('workplace', 3000, false);
 
 // Delay executing the functions so that the animation can be completed before the function's result show up
 let timedAttack;
@@ -219,7 +272,7 @@ let schoolAttacked = function(attWeap) {
 		} else if (attWeap === rpg) {
 			timedAttack = setTimeout(schoolAttackFunction, 2000, attWeap);
 		} else if (attWeap === tomahawk) {
-			timedAttack = setTimeout(schoolAttackFunction, 6000, attWeap);
+			timedAttack = setTimeout(schoolAttackFunction, 7000, attWeap);
 		}
 	}
 }
@@ -239,7 +292,7 @@ let workplaceAttacked = function(attWeap) {
 		} else if (attWeap === rpg) {
 			timedAttack = setTimeout(workplaceAttackFunction, 2000, attWeap);
 		} else if (attWeap === tomahawk) {
-			timedAttack = setTimeout(workplaceAttackFunction, 6000, attWeap);
+			timedAttack = setTimeout(workplaceAttackFunction, 7000, attWeap);
 		}
 	}
 }

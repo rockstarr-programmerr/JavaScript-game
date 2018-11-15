@@ -44,6 +44,10 @@ function Player(name, budget, arsenal) {
 		if (checkBudget(clickedWeapon) === false) {
 			// Part bellow is only for animation purpose
 			// ===========
+			soundNoMoney.pause();
+			soundNoMoney.currentTime = 0;
+			soundNoMoney.play();
+			// ===========
 			this.budget -= clickedWeapon.price;
 			if (this.budget < 0) {
 				adjustedBudget = -1;
@@ -59,6 +63,9 @@ function Player(name, budget, arsenal) {
 				width: 0
 			}, 300);
 		} else if (checkBudget(clickedWeapon)) {
+			soundBuying.pause();
+			soundBuying.currentTime = 0;
+			soundBuying.play();
 			if (this.arsenal.includes(clickedWeapon)) {
 				clickedWeapon.amo += clickedWeapon.originalAmo;
 				this.budget -= clickedWeapon.price;

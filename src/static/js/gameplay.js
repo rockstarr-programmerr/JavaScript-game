@@ -41,6 +41,7 @@ function stopExecution() {
 }
 
 $('#mercy-1-option-1').click(function() {
+	soundTomahawkShot.pause();
 	$('#mercy-1-box').hide();
 	stopExecution();
 	$('.tomahawk-bullet').finish();
@@ -53,6 +54,7 @@ $('#mercy-1-option-1').click(function() {
 });
 
 $('#mercy-1-option-2').click(function() {
+	soundTomahawkShot.pause();
 	stopExecution();
 	$('.tomahawk-bullet').stop(true);
 	$('#mercy-1-box').hide();
@@ -74,6 +76,17 @@ $('#mercy-2-option-1').click(function() {
 });
 
 $('#mercy-2-option-2').click(function() {
+	soundClockTicking.pause();
+	soundClockTicking.currentTime = 0;
+	soundClockTicking.play();
+	setTimeout(function() {
+		soundFireOne.pause();
+		soundFireTwo.pause();
+	}, 14000);
+	setTimeout(function() {
+		soundClockTicking.pause();
+		$(soundBackground).animate({volume: 0}, 4000);
+	}, 10000);
 	$('.tomahawk-bullet').animate({
 		top: '550px',
 		left: findWeaponPosition(tomahawk),
@@ -88,8 +101,14 @@ $('#mercy-2-option-2').click(function() {
 	}, 0);
 	$('#mercy-2-box').hide();
 	// Finally, animate the REAL win!!
+	setTimeout(function() {
+		soundBackground.pause();
+		soundRealWin.pause();
+		soundRealWin.currentTime = 0;
+		soundRealWin.play();
+	}, 14000);
 	$('#game-container-block').delay(14000).fadeIn(300);
-	$('#real-win-congratulation').text("Congratulation! You've beaten the game because you are a merciful and warm-hearted person. You forgave those that hurted you. More hearts like yours are all that the world needs. Fill it with love and kindness, it's the only way to beat the game of life :)")
+	$('#real-win-congratulation').text("Congratulation! You've beaten the game because you are a warm-hearted person. You have mercy even on those that hurted you. More hearts like yours are what the world needs. Fill it with love and kindness, it's the only way to beat the game of life :)")
 	$('#result-real-win').delay(14000).animate({
 		top: '150px',
 		opacity: 1

@@ -8,8 +8,9 @@
     <meta author="TtheTtruth">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS, Font awesome -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <title>Our game</title>
 
@@ -19,14 +20,68 @@
     <link rel="stylesheet" href="static/css/free-animation.css">
 
     <!-- Our sounds -->
-    <audio src="static/sound/sound-ak47-shot.wav" id="sound-ak47-shot"></audio>
-    <audio src="static/sound/sound-mp5-shot.wav" id="sound-mp5-shot"></audio>
-    <audio src="static/sound/sound-dragunov-shot.wav" id="sound-dragunov-shot"></audio>
-    <audio src="static/sound/sound-rpg-shot.wav" id="sound-rpg-shot"></audio>
-    <audio src="static/sound/sound-tomahawk-shot.wav" id="sound-tomahawk-shot"></audio>
+    <audio src="static/sound/sound-start-game.mp3" id="sound-start-game"></audio>
+    <audio src="static/sound/sound-ak47-shot.mp3" id="sound-ak47-shot"></audio>
+    <audio src="static/sound/sound-mp5-shot.mp3" id="sound-mp5-shot"></audio>
+    <audio src="static/sound/sound-dragunov-shot-explosion.mp3" id="sound-dragunov-shot-explosion"></audio>
+    <audio src="static/sound/sound-rpg-shot.mp3" id="sound-rpg-shot"></audio>
+    <audio src="static/sound/sound-tomahawk-shot.mp3" id="sound-tomahawk-shot"></audio>
+    <audio src="static/sound/sound-gun-reload.mp3" id="sound-gun-reload"></audio>
+    <audio src="static/sound/sound-empty-reload.mp3" id="sound-empty-reload"></audio>
+    <audio src="static/sound/sound-rpg-explosion.mp3" id="sound-rpg-explosion"></audio>
+    <audio src="static/sound/sound-tomahawk-explosion.mp3" id="sound-tomahawk-explosion"></audio>
+    <audio src="static/sound/sound-buying.mp3" id="sound-buying"></audio>
+    <audio src="static/sound/sound-no-money.mp3" id="sound-no-money"></audio>
+    <audio src="static/sound/sound-school-fall.mp3" id="sound-school-fall"></audio>
+    <audio src="static/sound/sound-workplace-fall.mp3" id="sound-workplace-fall"></audio>
+    <audio src="static/sound/sound-fire-1.mp3" id="sound-fire-1"></audio>
+    <audio src="static/sound/sound-fire-2.mp3" id="sound-fire-2"></audio>
+    <audio src="static/sound/sound-clock-ticking.mp3" id="sound-clock-ticking"></audio>
+    <audio src="static/sound/sound-background.mp3" id="sound-background"></audio>
+    <audio src="static/sound/sound-real-win.mp3" id="sound-real-win"></audio>
+    <audio src="static/sound/sound-lose.mp3" id="sound-lose"></audio>
 
   </head>
   <body>
+    <!-- Mute sound button -->
+    <div class="mute-sound text-center m-0 p-0">
+      <i id="sound-button" class="fas fa-volume-up"></i>
+    </div>
+    <!-- Start game screen -->
+    <div id="before-start-game-screen" class="before-start font-weight-bold">
+      <p class="text-center">Blow up your school <br> (and your office too if you have job)</p>
+      <p class="start-game-rule">- A game by Tthe Ttruth -</p>
+      <p style="display: block; width: 100%; padding: 20px 20px 0 0; font-size: 20px; text-align: center; line-height: 26px;"></p>
+      <div id="before-start-game-btn" class="play-again-btn text-center" style="position: relative; bottom: -20px;">Start...</div>
+    </div>
+
+    <div id="start-game-screen" class="result font-weight-bold">
+      <p>Welcome comrade !</p>
+      <p class="start-game-rule">
+        Are you tired of your teachers?
+        <br>
+        Maybe you're tired of your boss too?
+        <br>
+        Then you've come to the right place, friend
+      </p>
+      <p class="start-game-rule">
+        Rule is simple:
+        <br>
+        &#8226; Buy guns
+        <br>
+        &#8226; Blow up places you hate
+      </p>
+      <p style="display: block; width: 100%; padding: 20px 20px 0 0; font-size: 20px; text-align: center; line-height: 26px;"></p>
+      <div id="start-game-btn" class="play-again-btn text-center" style="position: relative; bottom: 0;">Play now !</div>
+      <p class="start-game-rule" style="text-align: left; font-size: 14px; color: #f2f2f2; opacity: 0.9;">
+        Music credit: <br>
+        &#8226; Sound effects on freesound.org <br>
+        &#8226; Bandit Radio - S.T.A.L.K.E.R. Clear Sky <br>
+        &#8226; DJ Blyatman - Tsar Bomba
+      </p>
+    </div>
+
+    <!-- GAME -->
     <div class="game-container">
 
       <!-- Targets section -->
@@ -194,7 +249,6 @@
       <div class="nuclear-explosion-school"></div>
 
     </div>
-
     
     <!-- Win/lose status box -->
     <div id="game-container-block"></div>
@@ -217,7 +271,7 @@
     <div id="result-real-win" class="result text-center font-weight-bold">
       <p>YOU WON !!</p>
       <p id="real-win-congratulation">If you look into here to find the solution for the game, go away. Play it the right way, have fun, don't cheat.</p>
-      <p style="display: block; width: 100%; padding: 20px 20px 0 0; font-size: 20px; text-align: right; line-height: 26px;">See you next time, bye!<br>- A game by Ttruth -</p>
+      <p style="display: block; width: 100%; padding: 20px 20px 0 0; font-size: 20px; text-align: right; line-height: 26px;">See you next time!<br>- A game by Tthe Ttruth -</p>
       <div class="result-img result-img-real-win"></div>
       <div class="play-again-btn">Play again</div>
       <form class="play-again-form" action="index.html">

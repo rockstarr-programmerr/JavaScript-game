@@ -288,6 +288,42 @@ body {
 	opacity: 0;
 }
 
+/* Start game */
+
+.before-start {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+	width: 1024px;
+	height: 768px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 10px;
+	z-index: 20;
+	background-image: url(../img/result-background.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	color: #2F4F4F;
+	font-size: 40px;
+	line-height: 50px;
+}
+
+#start-game-screen, #before-start-game-screen {
+	opacity: 0;
+	top: -500px;
+}
+
+#start-game-btn, #before-start-game-btn {
+	transition: all ease-in-out 200ms;
+}
+
+#start-game-btn:hover, #before-start-game-btn:hover {
+	opacity: 0.8;
+}
+
 /* Result box ==================================================================*/
 
 .result {
@@ -316,7 +352,7 @@ body {
 	top: -500px;
 }
 
-#real-win-congratulation {
+#real-win-congratulation, .start-game-rule {
 	padding: 20px 20px 0 20px;
 	font-size: 20px;
 	line-height: 26px;
@@ -592,4 +628,26 @@ body {
 
 .dust-cloud-school {
 	left: -60px;
+}
+
+/* Sound */
+.mute-sound {
+	display: none;
+	position: absolute;
+	top: 165px;
+	left: 200px;
+	width: 50px;
+	height: 30px;
+	z-index: 100;
+	cursor: pointer;
+	transition: all ease-in-out 200ms;
+}
+
+.mute-sound:hover {
+	opacity: 0.8;
+}
+
+.mute-sound i {
+	font-size: 24px;
+	color: #2F4F4F;
 }

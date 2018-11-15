@@ -148,6 +148,18 @@ function findTargetPosition(target) {
 for (let target of [school, workplace]) {
 	$('.' + target.name + '-img-container').click(function() {
 		if ((attWeap === ak47 || attWeap === mp5) && (attWeap.amo > 0 && target.destroyStatus == false)) {
+			switch (attWeap) {
+				case ak47:
+					soundAk47Shot.pause();
+					soundAk47Shot.currentTime = 0;
+					soundAk47Shot.play();
+					break;
+				case mp5:
+					soundMp5Shot.pause();
+					soundMp5Shot.currentTime = 0;
+					soundMp5Shot.play();
+					break;
+			}
 			blockField(attWeap.animationTime*3);
 			for (i = 0; i < 3; i++) {
 				$('.' + attWeap.objectName + '-bullet').animate({
@@ -173,6 +185,23 @@ for (let target of [school, workplace]) {
 				$('.fire-ball-' + target.name + '-3').fadeIn(300).delay(500).fadeOut(300);
 			}, attWeap.animationTime*3);
 		} else if ((attWeap === dragunov || attWeap === rpg || attWeap === tomahawk) && (attWeap.amo > 0 && target.destroyStatus == false)) {
+			switch (attWeap) {
+				case dragunov:
+					soundDragunovShot.pause();
+					soundDragunovShot.currentTime = 0;
+					soundDragunovShot.play();
+					break;
+				case rpg:
+					soundRpgShot.pause();
+					soundRpgShot.currentTime = 0;
+					soundRpgShot.play();
+					break;
+				case tomahawk:
+					soundTomahawkShot.pause();
+					soundTomahawkShot.currentTime = 0;
+					soundTomahawkShot.play();
+					break;	
+			}
 			blockField(attWeap.animationTime);
 			$('.' + attWeap.objectName + '-bullet').animate({
 				opacity: '1',
@@ -186,6 +215,10 @@ for (let target of [school, workplace]) {
 				left: '-50px'
 			}, 0);
 			// Dragunov, RPG, Tomahawk explosion animation is inside of Target.getAttacked() instead
+		} else {
+			soundEmptyReload.pause();
+			soundEmptyReload.currentTime = 0;
+			soundEmptyReload.play();
 		}
 	});	
 }
@@ -202,38 +235,99 @@ $('.play-again-form').mouseleave(function() {
 });
 
 // Sound effects:
+let soundStartGame = document.querySelector('#sound-start-game');
 let soundAk47Shot = document.querySelector('#sound-ak47-shot');
 let soundMp5Shot = document.querySelector('#sound-mp5-shot');
-let soundDragunovShot = document.querySelector('#sound-dragunov-shot');
+let soundDragunovShot = document.querySelector('#sound-dragunov-shot-explosion');
 let soundRpgShot = document.querySelector('#sound-rpg-shot');
 let soundTomahawkShot = document.querySelector('#sound-tomahawk-shot');
+let soundGunReload = document.querySelector('#sound-gun-reload');
+let soundEmptyReload = document.querySelector('#sound-empty-reload');
+let soundRpgExplosion = document.querySelector('#sound-rpg-explosion');
+let soundTomahawkExplosion = document.querySelector('#sound-tomahawk-explosion');
+let soundBuying = document.querySelector('#sound-buying');
+let soundNoMoney = document.querySelector('#sound-no-money');
+let soundSchoolFall = document.querySelector('#sound-school-fall');
+let soundWorkplaceFall = document.querySelector('#sound-workplace-fall');
+let soundFireOne = document.querySelector('#sound-fire-1');
+let soundFireTwo = document.querySelector('#sound-fire-2');
+let soundClockTicking = document.querySelector('#sound-clock-ticking');
+let soundBackground = document.querySelector('#sound-background');
+let soundRealWin = document.querySelector('#sound-real-win');
+let soundLose = document.querySelector('#sound-lose');
 
-$('.workplace-img-container, .school-img-container').click(function() {
-	switch (attWeap) {
-		case ak47:
-			soundAk47Shot.pause();
-			soundAk47Shot.currentTime = 0;
-			soundAk47Shot.play();
-			break;
-		case dragunov:
-			soundDragunovShot.pause();
-			soundDragunovShot.currentTime = 0;
-			soundDragunovShot.play();
-			break;
-		case mp5:
-			soundMp5Shot.pause();
-			soundMp5Shot.currentTime = 0;
-			soundMp5Shot.play();
-			break;
-		case rpg:
-			soundRpgShot.pause();
-			soundRpgShot.currentTime = 0;
-			soundRpgShot.play();
-			break;
-		case tomahawk:
-			soundTomahawkShot.pause();
-			soundTomahawkShot.currentTime = 0;
-			soundTomahawkShot.play();
-			break;	
+let arrayOfSounds = [soundStartGame, soundAk47Shot, soundMp5Shot, soundDragunovShot, soundRpgShot, soundTomahawkShot, soundGunReload, soundEmptyReload, soundRpgExplosion, soundTomahawkExplosion, soundBuying, soundNoMoney, soundSchoolFall, soundWorkplaceFall, soundFireOne, soundFireTwo, soundClockTicking, soundBackground, soundRealWin, soundLose]
+
+
+window.onload = function() {
+	$('#game-container-block').show();
+	$('.mute-sound').animate({
+		opacity: 0
+	}, 0);
+	$('.mute-sound').show();
+	$('#before-start-game-screen').animate({
+		top: 0,
+		opacity: 1
+	}, 700);
+}
+
+$('#before-start-game-btn').click(function() {
+	soundStartGame.pause();
+	soundStartGame.currentTime = 0;
+	soundStartGame.play();
+	soundStartGame.loop = true;
+	$('#before-start-game-screen').animate({
+		top: '-2000px',
+		opacity: 0
+	}, 700);
+	$('#start-game-screen').delay(700).animate({
+		top: '150px',
+		opacity: 1
+	}, 700);
+	$('.mute-sound').delay(700).animate({
+		opacity: 1
+	}, 700);
+});
+
+$('#start-game-btn').click(function() {
+	$('#sound-start-game').animate({volume: 0}, 2000);
+	setTimeout(function() {
+		soundStartGame.pause();
+		soundBackground.pause();
+		soundBackground.currentTime = 0;
+		soundBackground.play();
+		soundBackground.loop = true;
+	}, 3000);
+	$('#game-container-block').hide()
+	$('.mute-sound').animate({
+		top: '20px',
+		left: '10px'
+	}, 0);
+	$('#start-game-screen').animate({
+		top: '-500px',
+		opacity: 0
+	}, 700);
+	document.querySelector('#sound-button').style.color = '#f2f2f2';
+});
+
+// Mute sound button:
+let soundOn = true;
+$('.mute-sound').click(function() {
+	if (soundOn === true) {
+		document.querySelector('#sound-button').setAttribute('class', 'fas fa-volume-mute');
+		soundOn = false;
+		for (let sound of arrayOfSounds) {
+			if (sound.volume > 0) {
+				sound.volume = 0;
+			}
+		}
+	} else if (soundOn === false) {
+		document.querySelector('#sound-button').setAttribute('class', 'fas fa-volume-up');
+		soundOn = true;
+		for (let sound of arrayOfSounds) {
+			if (sound.volume === 0) {
+				sound.volume = 1;
+			}
+		}
 	}
 });
